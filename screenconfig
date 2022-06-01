@@ -1,0 +1,23 @@
+shell -${SHELL}
+defscrollback 10000
+startup_message off
+logfile /root/screen_logs/screen-%S-%n-%Y-%m-%d-%0c%A.txt
+deflog on
+logtstamp on
+logtstamp after 5
+logfile flush 1
+logtstamp string "-- time-stamp -- %Y-%m-%d %0c:%s --\012"
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{gk}[%{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= w}%?%+Lw%?%? %{g}][ %{= r}%H%{g} ][ %{= w}%0C:%s%a%{g} ]%{W}'
+termcapinfo xterm* ti@:te@
+# define layouts
+layout new 'horizontal'
+split
+layout new 'vertical'
+split -v
+layout new  'main'
+# bind control sequences for new layouts
+bind V layout select 'vertical'
+bind H layout select 'horizontal'
+bind ' ' layout next # <- actually means Ctrl-a + Space
